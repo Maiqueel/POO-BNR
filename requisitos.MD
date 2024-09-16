@@ -1,18 +1,8 @@
-[x]  Criar um objeto a partir da classe Veículo
-[x] Criar veículo
-[ ] Imprimir o veículo
-3. Acelerar
-RN: 
-Precisa verificar se a marcha é compatível com o aumento de velocidade.
-Aceleração deve ter ganho de velocidade proporcional com a potência.
-Levar em consideração a potência do veículo para definir um novo atributo de "velocidadeMaxima".
-A Velocidade máxima deverá levar em consideração a potência do veículo
-4. Frear 
-5. Subir marcha
-RN: Deve verificar se a velocidade é compatível
-6. Reduzir marcha
-RN: Deve verificar se a velocidade é compatível
-7. Engatar uma marcha específica
-RN: Não permitir marcha se a velocidade for incompatível
-8. Parar
-RN: Reduz a velocidade do carro para 0 de forma gradual, decrementando 10 km/h de cada vez, até que o carro pare completamente. Use um loop para realizar a desaceleração.
+1. O sistema deve permitir o cadastro de quadras esportivas disponíveis.
+2. Cada quadra deve ter um nome e um tipo de esporte associado (por exemplo, futebol, tênis, basquete).
+3. O sistema deve permitir que os clientes reservem quadras para jogar.
+4. Os clientes devem fornecer seu nome e selecionar a quadra desejada.
+5. O sistema deve registrar a data e o horário da reserva.
+6. O sistema deve ser capaz de listar todas as quadras disponíveis.
+7. O sistema deve ser capaz de listar todas as reservas feitas.
+8. Uma integração com Gemini para dar sugestão de nutrição esportiva toda vez que um novo agendamento for realizado

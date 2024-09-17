@@ -1,57 +1,42 @@
-import { Quadras } from "./Quadras";
 import prompt from "prompt-sync";
+import { SistemaBNR } from "./Quadra";
 
 const teclado = prompt();
 
-console.log("Criação da Quadra");
-const quadra: Quadras = criaQuadra();
+const sistema = new SistemaBNR();
 
-while (true) {
-  console.log("########### MENU ###########");
-  console.log("1 - Reservar");
-  console.log("2 - Listar Quadras Disponiveis");
-  console.log("3 - Listar Reservas Feitas");
-  console.log("0 - Sair");
+while(true){
+    console.log("+============ Bola na Rede ============+");
+    console.log("|1 - Cadastrar Quadra                  |");
+    console.log("|2 - Listar Quadras                    |");
+    console.log("|3 - Reservar Quadra                   |");
+    console.log("|4 - Listar Reservas                   |");
+    console.log("|0 - Sair                              |");
+    console.log("+============ Bola na Rede ============+");
+    
+    const opcao = +teclado('Escolha uma opção: ');
+    if(opcao === 0){
+        break;
+    }
+    switch (opcao) {
+        case 1:
+            const nomeQuadra = teclado("Nome da Quadra: ")
+            const esporteQuadra = teclado("Esporte da Quadra: ")
+            sistema.cadastrarQuadra(nomeQuadra, esporteQuadra)
+            console.log("Quadra cadastrada com sucesso.")
 
-  const opcao = +teclado("Escolha uma opção: ");
-  if (opcao === 0) {
-    break;
-  }
-  switch (opcao) {
-    case 1:
-        reservas()
-      break;
-    case 2:
-        console.log(`Nome: ${quadra.nomeQuadra} \nTipo de Esporte: ${quadra.tipoEsporte} \nHorario Disponiveis: ${quadra.hora}`);
-      break;
-    case 3:
+        case 2:
+            console.log("Quadras disponíveis:")
+            console.log(sistema.listarQuadras());
 
-      break;
+        case 3:
+            console.log("Reserva realizada com sucesso.")
 
-    default:
-      break;
-  }
-}
+        case 4:
+            console.log("Reservas realizadas por nossos usuários:")
+            console.log(sistema.listarReservas());
 
-console.table(quadra);
-
-function criaQuadra(): Quadras {
-
-  const nomeQuadra = teclado("Nome da Quadra: ");
-  const tipoEsporte = teclado("Tipo de Esporte: ");
-  const quadra: Quadras = new Quadras(nomeQuadra, tipoEsporte);
-  
-  return quadra;
-}
-
-    function reservas(): void {
-        const horaAgenda = +teclado("Hora da reserva (HH): ");
-        const nomeCliente = teclado("Nome do cliente: ");
-        const novaReserva = 
-        //remover um item de um array
-        quadra.hora.splice(horaAgenda, 1)
-        quadra.nomeCliente = nomeCliente;
-        
-        console.log(`Reserva efetuada com sucesso!`);
-        
+        default:
+            break;
+    }
 }

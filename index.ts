@@ -23,18 +23,22 @@ while(true){
             const nomeQuadra = teclado("Nome da Quadra: ")
             const esporteQuadra = teclado("Esporte da Quadra: ")
             sistema.cadastrarQuadra(nomeQuadra, esporteQuadra)
-            console.log("Quadra cadastrada com sucesso.")
-
-        case 2:
-            console.log("Quadras disponíveis:")
-            console.log(sistema.listarQuadras());
-
-        case 3:
-            console.log("Reserva realizada com sucesso.")
-
-        case 4:
-            console.log("Reservas realizadas por nossos usuários:")
-            console.log(sistema.listarReservas());
+            break;
+            
+            case 2:
+                console.log(sistema.listarQuadras());
+                break;
+                
+            case 3:
+                const reservaCliente = teclado("Nome do Cliente: ")
+                const reservaQuadra = teclado("Nome da Quadra: ")
+                const reservaHora = teclado("Horário da Reserva: ")
+                sistema.cadastrarReserva(reservaCliente, reservaQuadra, reservaHora)
+                break;
+                    
+            case 4:
+                console.log(sistema.listarReservas());
+                break;
 
         default:
             break;

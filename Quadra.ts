@@ -44,7 +44,7 @@ export class SistemaBNR {
         }
     }
 
-    cadastrarQuadra(nome: string, esporte: string): void {
+    cadastrarQuadra(nome: string, esporte: string) {
         const quadra = new Quadra(nome, esporte);
         this.quadras.push(quadra);
         console.log("Quadra cadastrada com sucesso.")

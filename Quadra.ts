@@ -83,7 +83,7 @@ export class SistemaBNR {
             this.quadras.splice(indexQuadra, 1);
 
             console.log("Reserva feita com sucesso!")
-            generateContent("Digá olá pra mim?")
+            generateContent("Você é um robo que envia uma dieta saudável após algum usuário efetuar uma reserva de uma quadra esportivo, agradeça-o por escolher a empresa: Bola na Rede, o nome do mesmo é " + cliente + ", além disso, envie uma sugestão de nutrição esportiva, não utilize o negrito (**), pois será utilizado em um terminal do VS CODE.")
         }else {
             console.log("Quadra não encontrada.")
         }

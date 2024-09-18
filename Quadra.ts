@@ -1,3 +1,5 @@
+import { generateContent } from "./generateContent";
+
 class Quadra {
     nome: string;
     esporte: string;
@@ -81,6 +83,7 @@ export class SistemaBNR {
             this.quadras.splice(indexQuadra, 1);
 
             console.log("Reserva feita com sucesso!")
+            generateContent("Digá olá pra mim?")
         }else {
             console.log("Quadra não encontrada.")
         }

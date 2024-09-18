@@ -21,8 +21,8 @@ while(true){
     }
     switch (opcao) {
         case 1:
-            const nomeQuadra = teclado("Nome da Quadra: ").toLowerCase()
-            const esporteQuadra = teclado("Esporte da Quadra: ").toLowerCase()
+            const nomeQuadra = teclado("Nome da Quadra: ").toLowerCase();
+            const esporteQuadra = teclado("Esporte da Quadra: ").toLowerCase();
             sistema.cadastrarQuadra(nomeQuadra, esporteQuadra)
             break;
             
@@ -31,21 +31,20 @@ while(true){
                 break;
                 
             case 3:
-                const reservaCliente = teclado("Nome do Cliente: ").toLowerCase()
-                const reservaQuadra = teclado("Nome da Quadra: ").toLowerCase()
-                const reservaHora = teclado("Horário da Reserva: ")
-                sistema.cadastrarReserva(reservaCliente, reservaQuadra, reservaHora)
+                const reservaCliente = teclado("Nome do Cliente: ").toLowerCase();
+                const reservaQuadra = teclado("Nome da Quadra: ").toLowerCase();
+                const reservaHora = teclado("Horário da Reserva: ");
+                sistema.cadastrarReserva(reservaCliente, reservaQuadra, reservaHora);
                 break;
                     
             case 4:
                 console.log(sistema.listarReservas());
                 break;
-            
             case 5:
                 console.log(sistema.listarReservas());
                 console.log("Excluir reserva:");
-                const excluir = teclado("Nome da quadra: ").toLowerCase()
-                sistema.excluirReserva(excluir)
+                const excluir = teclado("Nome da quadra: ").toLowerCase();
+                sistema.excluirReserva(excluir);
                 break;
 
         default:

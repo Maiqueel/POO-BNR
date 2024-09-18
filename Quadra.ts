@@ -13,12 +13,12 @@ class Quadra {
 class Reserva {
     cliente: string;
     quadra: Quadra;
-    data: string;
+    horario: string;
 
-    constructor(cliente: string, quadra: Quadra, data: string) {
+    constructor(cliente: string, quadra: Quadra, horario: string) {
         this.cliente = cliente;
         this.quadra = quadra;
-        this.data = data;
+        this.horario = horario;
     }
 }
 
@@ -52,7 +52,7 @@ export class SistemaBNR {
             console.log("");
             
             this.reservas.forEach((reserva) => {
-                console.log(`${reserva.cliente.padEnd(15)} ${reserva.quadra.nome.padEnd(16)} ${reserva.quadra.esporte.padEnd(15)} ${reserva.data.padEnd(10)}`);
+                console.log(`${reserva.cliente.padEnd(15)} ${reserva.quadra.nome.padEnd(16)} ${reserva.quadra.esporte.padEnd(15)} ${reserva.horario.padEnd(10)}`);
             });
             console.log("-".repeat(59));
             return [];
@@ -73,10 +73,10 @@ export class SistemaBNR {
         }
     }
 
-    cadastrarReserva(cliente: string, quadra: string, data: string) {
+    cadastrarReserva(cliente: string, quadra: string, horario: string) {
         const quadraVerif = this.quadras.find(quadraArray => quadraArray.nome === quadra);
         if (quadraVerif) {
-            const reserva = new Reserva(cliente, quadraVerif, data);
+            const reserva = new Reserva(cliente, quadraVerif, horario);
             this.reservas.push(reserva);
 
             const indexQuadra = this.quadras.findIndex(quadraArray => quadraArray.nome === quadra)

@@ -32,11 +32,18 @@ export class SistemaBNR {
     listarQuadras(): Quadra[] {
         // Se o tamanho do array quadras for maior que 0, ele retorna o array.
         if(this.quadras.length > 0) {
-            console.log("Quadras disponíveis para Reserva:")
-            // Mostra o array inteiro com todas quadras, é tipo um loop porém mostra tudo de uma vez
-            return this.quadras;
+            console.log("\nQuadras disponíveis para Reserva:")
+            console.log("-".repeat(33));
+            console.log("Nome da quadra.: Esporte.......:");
+            console.log("");
+            
+            this.quadras.forEach((quadra) => {
+                console.log(`${quadra.nome.padEnd(16)} ${quadra.esporte.padEnd(15)}`);
+            });
+            
+            console.log("-".repeat(33));            
         }else {
-            console.log("Nenhuma quadra está disponível!")
+            console.log("Nenhuma quadra está criada!")
         }
         // Na linha 32 tem ": Quadra[]", então a função espera o Quadra[], porém como vai retornar nada, é necessário por return [];
         return [];
@@ -45,8 +52,16 @@ export class SistemaBNR {
     // Mesma coisa que o de cima ^
     listarReservas(): Reserva[] {
         if (this.reservas.length > 0) {
-            console.log("Reservas feitas por nossos usuários:");
-            return this.reservas;
+            console.log("\nReservas feitas por nossos usuários:");
+            console.log("-".repeat(59));
+            console.log("Cliente.......: Nome da quadra.: Esporte.......: Horario..:");
+            console.log("");
+            
+            this.reservas.forEach((reserva) => {
+                console.log(`${reserva.cliente.padEnd(15)} ${reserva.quadra.nome.padEnd(16)} ${reserva.quadra.esporte.padEnd(15)} ${reserva.data.padEnd(10)}`);
+            });
+            console.log("-".repeat(59));
+            return [];
         } else {
             console.log("Nenhuma reserva foi realizada.");
             return [];
@@ -66,7 +81,7 @@ export class SistemaBNR {
         // Faz uma verificação na tabela quadras
         // q => q.nome === quadra
         // ^^ -- Percorre por cada linha do array pra verificar se acha algum array com o mesmo nome da variavel quadra
-        const quadraVerif = this.quadras.find(q => q.nome === quadra);
+        const quadraVerif = this.quadras.find(quadraArray => quadraArray.nome === quadra);
         if (quadraVerif) {
             // Se encontrar algo, ele vai criar um novo objeto na array reserva
             const reserva = new Reserva(cliente, quadraVerif, data);
@@ -88,6 +103,24 @@ export class SistemaBNR {
             console.log("Quadra não encontrada.")
         }
 
+    }
+
+    excluirReserva(nomeQuadra: string): void {
+        // Encontra o índice da reserva com base no nome da quadra
+        const indexReserva = this.reservas.findIndex(reserva => reserva.quadra.nome === nomeQuadra);
+
+        if (indexReserva !== -1) {
+            // Se a reserva for encontrada, remove-a da lista de reservas
+            const reserva = this.reservas[indexReserva];
+            this.reservas.splice(indexReserva, 1);
+
+            // Adiciona a quadra de volta à lista de quadras disponíveis
+            this.quadras.push(reserva.quadra);
+
+            console.log("Reserva excluída com sucesso.");
+        } else {
+            console.log("Reserva com o nome da quadra fornecido não encontrada.");
+        }
     }
     
 }

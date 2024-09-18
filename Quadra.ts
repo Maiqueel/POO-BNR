@@ -69,12 +69,14 @@ export class SistemaBNR {
     }
 
     cadastrarQuadra(nome: string, esporte: string) {
-        // No index.ts, ele exige duas variaveis, nome e esporte, as duas variaveis vão abaixo
-        // Sendo assim, é criado um novo objeto.
-        const quadra = new Quadra(nome, esporte);
-        // Puxa a nova quadra(objeto) pro array.
-        this.quadras.push(quadra);
-        console.log("Quadra cadastrada com sucesso.")
+        const quadraVerif = this.quadras.find(quadraArray => quadraArray.nome === nome);
+        if (quadraVerif) {
+            console.log("Abortado! Já possui uma arena com o mesmo nome.")
+        }else {
+            const quadra = new Quadra(nome, esporte);
+            this.quadras.push(quadra);
+            console.log("Quadra cadastrada com sucesso.")
+        }
     }
 
     cadastrarReserva(cliente: string, quadra: string, data: string) {
@@ -92,7 +94,7 @@ export class SistemaBNR {
             // Se achar o mesmo nome em algum objeto, ele vai pegar o index
             // Se quiser ver os indexs, coloca         console.table(this.quadras);
             // Abaixo da linha 41, que tu vai ver os index quando executar o codigo
-            const indexQuadra = this.quadras.findIndex(q => q.nome === quadra)
+            const indexQuadra = this.quadras.findIndex(quadraArray => quadraArray.nome === quadra)
 
             // Ele vai removar a quadra que tem o mesmo index
             // O 1 é pra limitar quantos vai remover após o index desejado, no caso 1 é pq é só o que a gente quer

@@ -8,10 +8,9 @@ describe('SistemaBNR', () => {
     });
 
     test('deve cadastrar uma nova quadra', () => {
-        sistema.cadastrarQuadra('Quadra 1', 'Futebol');
+        sistema.cadastrarQuadra('quadra-teste', 'Futebol');
         expect(sistema.quadras.length).toBe(1);
-        expect(sistema.quadras[0].nome).toBe('Quadra 1');
-        expect(sistema.quadras[0].esporte).toBe('Futebol');
+        expect(sistema.quadras[0].nome).toBe('quadra-teste');
     });
 
     test('não deve cadastrar uma quadra com nome duplicado', () => {

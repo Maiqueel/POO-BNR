@@ -73,21 +73,39 @@ export class SistemaBNR {
         }
     }
 
+    validarHorario(horario: string): boolean {
+        const regex = /^([01]\d|2[0-3]):([0-5]\d)$/;
+        return regex.test(horario);
+    }
+
+    verificarConflitoHorario(horario: string): boolean {
+        return this.reservas.some(reserva => reserva.horario === horario);
+    }
+
     cadastrarReserva(cliente: string, quadra: string, horario: string) {
+        if (!this.validarHorario(horario)) {
+            console.log("Horário inválido. Use o formato HH:MM.");
+            return;
+        }
+
+        if (this.verificarConflitoHorario(horario)) {
+            console.log("Horário já reservado. Escolha outro horário.");
+            return;
+        }
+
         const quadraVerif = this.quadras.find(quadraArray => quadraArray.nome === quadra);
         if (quadraVerif) {
             const reserva = new Reserva(cliente, quadraVerif, horario);
             this.reservas.push(reserva);
 
-            const indexQuadra = this.quadras.findIndex(quadraArray => quadraArray.nome === quadra)
+            const indexQuadra = this.quadras.findIndex(quadraArray => quadraArray.nome === quadra);
             this.quadras.splice(indexQuadra, 1);
 
-            console.log("Reserva feita com sucesso!")
-            generateContent("Você é um robo que envia uma dieta saudável após algum usuário efetuar uma reserva de uma quadra esportivo, agradeça-o por escolher a empresa: Bola na Rede, o nome do mesmo é " + cliente + ", além disso, envie uma sugestão de nutrição esportiva.")
-        }else {
-            console.log("Quadra não encontrada.")
+            console.log("Reserva feita com sucesso!");
+            generateContent("Você é um robo que envia uma dieta saudável após algum usuário efetuar uma reserva de uma quadra esportivo, agradeça-o por escolher a empresa: Bola na Rede, o nome do mesmo é " + cliente + ", além disso, envie uma sugestão de nutrição esportiva.");
+        } else {
+            console.log("Quadra não encontrada.");
         }
-
     }
 
     excluirReserva(nomeQuadra: string): void {
@@ -102,5 +120,4 @@ export class SistemaBNR {
             console.log("Reserva com o nome da quadra fornecido não encontrada.");
         }
     }
-    
 }

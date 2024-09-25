@@ -74,8 +74,8 @@ export class SistemaBNR {
     }
 
     validarHorario(horario: string): boolean {
-        const regex = /^([01]\d|2[0-3]):([0-5]\d)$/;
-        return regex.test(horario);
+        const verifHorario = /^([01]\d|2[0-3]):([0-5]\d)$/;
+        return verifHorario.test(horario);
     }
 
     verificarConflitoHorario(horario: string): boolean {

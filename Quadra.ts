@@ -78,7 +78,7 @@ export class SistemaBNR {
         return verifHorario.test(horario);
     }
 
-    verificarConflitoHorario(horario: string): boolean {
+    verificarHorario(horario: string): boolean {
         return this.reservas.some(reserva => reserva.horario === horario);
     }
 
@@ -88,7 +88,7 @@ export class SistemaBNR {
             return;
         }
 
-        if (this.verificarConflitoHorario(horario)) {
+        if (this.verificarHorario(horario)) {
             console.log("Horário já reservado. Escolha outro horário.");
             return;
         }

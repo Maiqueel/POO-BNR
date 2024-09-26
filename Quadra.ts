@@ -65,7 +65,7 @@ export class SistemaBNR {
     cadastrarQuadra(nome: string, esporte: string) {
         const quadraVerif = this.quadras.find(quadraArray => quadraArray.nome === nome);
         if (quadraVerif) {
-            console.log("Abortado! Já possui uma arena com o mesmo nome.")
+            console.log("Erro! Já possui uma quadra com o mesmo nome.")
         }else {
             const quadra = new Quadra(nome, esporte);
             this.quadras.push(quadra);
@@ -108,11 +108,10 @@ export class SistemaBNR {
         }
     }
 
-    excluirReserva(nomeQuadra: string): void {
+    excluirReserva(nomeQuadra: string) {
         const indexReserva = this.reservas.findIndex(reserva => reserva.quadra.nome === nomeQuadra);
 
         if (indexReserva !== -1) {
-            const reserva = this.reservas[indexReserva];
             this.reservas.splice(indexReserva, 1);
 
             console.log("Reserva excluída com sucesso.");

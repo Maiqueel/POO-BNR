@@ -44,4 +44,10 @@ describe('SistemaBNR', () => {
         sistema.excluirReserva('Quadra Inexistente');
         expect(sistema.reservas.length).toBe(0);
     });
+
+    test('não deve cadastrar reserva com horário inválido', () => {
+        sistema.cadastrarQuadra('Quadra 1', 'Futebol');
+        sistema.cadastrarReserva('Cliente 1', 'Quadra 1', '25:00');
+        expect(sistema.reservas.length).toBe(0);
+    });
 });

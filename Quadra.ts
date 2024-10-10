@@ -1,8 +1,8 @@
 import { generateContent } from "./generateContent";
 
 class Quadra {
-    nome: string;
-    esporte: string;
+    public nome: string;
+    public esporte: string;
 
     constructor(nome: string, esporte: string) {
         this.nome = nome;
@@ -11,9 +11,9 @@ class Quadra {
 }
 
 class Reserva {
-    cliente: string;
-    quadra: Quadra;
-    horario: string;
+    public cliente: string;
+    public quadra: Quadra;
+    public horario: string;
 
     constructor(cliente: string, quadra: Quadra, horario: string) {
         this.cliente = cliente;
@@ -23,10 +23,10 @@ class Reserva {
 }
 
 export class SistemaBNR {
-    quadras: Quadra[] = [];
-    reservas: Reserva[] = [];
+    private quadras: Quadra[] = [];
+    private reservas: Reserva[] = [];
 
-    listarQuadras(): Quadra[] {
+    public listarQuadras(): Quadra[] {
         if(this.quadras.length > 0) {
             console.log("\nQuadras disponíveis para Reserva:")
             console.log("-".repeat(33));
@@ -44,7 +44,7 @@ export class SistemaBNR {
         return [];
     }
 
-    listarReservas(): Reserva[] {
+    public listarReservas(): Reserva[] {
         if (this.reservas.length > 0) {
             console.log("\nReservas feitas por nossos usuários:");
             console.log("-".repeat(59));
@@ -62,7 +62,7 @@ export class SistemaBNR {
         }
     }
 
-    cadastrarQuadra(nome: string, esporte: string) {
+    public cadastrarQuadra(nome: string, esporte: string) {
         const quadraVerif = this.quadras.find(quadraArray => quadraArray.nome === nome);
         if (quadraVerif) {
             console.log("Erro! Já possui uma quadra com o mesmo nome.")
@@ -73,16 +73,16 @@ export class SistemaBNR {
         }
     }
 
-    validarHorario(horario: string): boolean {
+    public validarHorario(horario: string): boolean {
         const verifHorario = /^([01]\d|2[0-3]):([0-5]\d)$/;
         return verifHorario.test(horario);
     }
 
-    verificarHorario(horario: string): boolean {
+    public verificarHorario(horario: string): boolean {
         return this.reservas.some(reserva => reserva.horario === horario);
     }
 
-    cadastrarReserva(cliente: string, quadra: string, horario: string) {
+    public cadastrarReserva(cliente: string, quadra: string, horario: string) {
         if (!this.validarHorario(horario)) {
             console.log("Horário inválido. Use o formato HH:MM.");
             return;
@@ -108,7 +108,7 @@ export class SistemaBNR {
         }
     }
 
-    excluirReserva(nomeQuadra: string) {
+    public excluirReserva(nomeQuadra: string) {
         const indexReserva = this.reservas.findIndex(reserva => reserva.quadra.nome === nomeQuadra);
 
         if (indexReserva !== -1) {
